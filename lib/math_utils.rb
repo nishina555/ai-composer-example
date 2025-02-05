@@ -17,4 +17,10 @@ class MathUtils
 
     (1..number).reduce(:*)
   end
+
+  def self.power(base, exponent)
+    raise ArgumentError, '指数は0以上の整数である必要があります' if !exponent.is_a?(Integer) || exponent.negative?
+
+    base**exponent
+  end
 end

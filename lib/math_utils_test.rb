@@ -22,4 +22,13 @@ class MathUtilsTest < Minitest::Test
     assert_equal 120, MathUtils.factorial(5)
     assert_raises(ArgumentError) { MathUtils.factorial(-1) }
   end
+
+  def test_power
+    assert_equal 1, MathUtils.power(5, 0)
+    assert_equal 8, MathUtils.power(2, 3)
+    assert_equal 1, MathUtils.power(-1, 2)
+    assert_equal -8, MathUtils.power(-2, 3)
+    assert_raises(ArgumentError) { MathUtils.power(2, -1) }
+    assert_raises(ArgumentError) { MathUtils.power(2, 1.5) }
+  end
 end
