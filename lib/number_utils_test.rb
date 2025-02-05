@@ -39,4 +39,24 @@ class NumberUtilsTest < Minitest::Test
     assert_equal 0, NumberUtils.sum_range(0..0)
     assert_equal 55, NumberUtils.sum_range(1..10)
   end
+
+  def test_factorial
+    assert_equal 1, NumberUtils.factorial(0)
+    assert_equal 1, NumberUtils.factorial(1)
+    assert_equal 2, NumberUtils.factorial(2)
+    assert_equal 6, NumberUtils.factorial(3)
+    assert_equal 24, NumberUtils.factorial(4)
+    assert_equal 120, NumberUtils.factorial(5)
+    assert_raises(ArgumentError) { NumberUtils.factorial(-1) }
+  end
+
+  def test_truncate
+    assert_equal 3.0, NumberUtils.truncate(3.14159)
+    assert_equal 3.14, NumberUtils.truncate(3.14159, 2)
+    assert_equal 3.141, NumberUtils.truncate(3.14159, 3)
+    assert_equal(-3.14, NumberUtils.truncate(-3.14159, 2))
+    assert_equal 0.0, NumberUtils.truncate(0.999)
+    assert_raises(ArgumentError) { NumberUtils.truncate(3.14, -1) }
+    assert_raises(ArgumentError) { NumberUtils.truncate(3.14, 1.5) }
+  end
 end
