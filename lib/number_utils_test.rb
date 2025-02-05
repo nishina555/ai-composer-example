@@ -11,6 +11,13 @@ class NumberUtilsTest < Minitest::Test
     refute NumberUtils.even?(3)
   end
 
+  def test_odd?
+    assert NumberUtils.odd?(1)
+    assert NumberUtils.odd?(3)
+    refute NumberUtils.odd?(2)
+    refute NumberUtils.odd?(4)
+  end
+
   def test_prime?
     assert NumberUtils.prime?(2)
     assert NumberUtils.prime?(3)
@@ -19,6 +26,12 @@ class NumberUtilsTest < Minitest::Test
     refute NumberUtils.prime?(1)
     refute NumberUtils.prime?(4)
     refute NumberUtils.prime?(6)
+  end
+
+  def test_primes_in_range
+    assert_equal [2, 3, 5, 7], NumberUtils.primes_in_range(1, 10)
+    assert_equal [], NumberUtils.primes_in_range(1, 1)
+    assert_equal [11, 13, 17, 19], NumberUtils.primes_in_range(11, 20)
   end
 
   def test_sum_range
